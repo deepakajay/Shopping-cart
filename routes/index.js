@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
       image:"https://rukminim1.flixcart.com/image/832/832/ku5ufm80/mobile/8/b/1/sport-9a-redmi-original-imag7chjvhxdhhyh.jpeg?q=70"
     }
   ]
-  res.render('index', { products });
+  res.render('index', { products,admin:false });
 });
 
 module.exports = router;
