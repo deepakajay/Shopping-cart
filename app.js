@@ -8,7 +8,11 @@ var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 var hbs=require("express-handlebars")
 var app = express();
+
+var db=require("./config/connection")
+
 var fileUpload=require("express-fileupload")
+ 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +25,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
+
+db.connect(function(err){
+  if(err){
+    console.log(" DataBase Connection Error"+err);
+  }
+  else{
+    console.log("Database connected");
+  }
+})
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
