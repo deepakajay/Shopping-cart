@@ -1,5 +1,5 @@
 var express = require('express');
-const {render}=require("../app")
+const {render, route}=require("../app")
 var router = express.Router();
 var productHelper=require("../helpers/product-helpers")
 const fileUpload = require('express-fileupload');
@@ -33,6 +33,14 @@ router.post("/add-product",function(req,res){
       }
     })
     
+  })
+})
+
+
+router.get("/delete-product/:id",function(req,res){
+  let proId=req.params.id
+  productHelpers.deleteProduct(proId).then((response)=>{
+    res.redirect('/admin')
   })
 })
 
