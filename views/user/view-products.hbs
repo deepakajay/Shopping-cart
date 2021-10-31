@@ -7,11 +7,10 @@
                     <div class="card" style="width: 15rem; height:25rem">
                       <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height: 12rem;" >
                       <div class="card-body">
+                    
                         <h5 class="card-title">{{this.Name}}</h5>
-                       
-
-                        
                         <p class="card-text">{{{this.Description}}}</p>
+                        <p class="card-text">₹{{this.Price}}</p>
                         <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
                       </div>
                     </div>
@@ -25,8 +24,10 @@
     
 
 
+
 <script>
-   
+     Handlebars.registerHelper('trimString', function(passedString) {
+    var theString = passedString.substring(0,5);
+    return new Handlebars.SafeString(theString)
+});
 </script>
-
-

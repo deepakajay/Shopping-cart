@@ -19,7 +19,8 @@ router.get("/add-product",function(req,res){
 
 router.post("/add-product",function(req,res){
   console.log(req.body);
-  console.log(req.files.Image);
+  console.log("Price is in string or not "+(req.body.Price));
+  req.body.Price=parseInt(req.body.Price)
 
   productHelpers.addProduct(req.body,function(id){
     let image=req.files.Image;
