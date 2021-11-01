@@ -146,7 +146,7 @@ module.exports={
                         $inc:{'products.$.quantity':details.count}
                     }
                     ).then((response)=>{
-                        resolve(true)
+                        resolve({status:true})
                     })
             
             }
@@ -195,6 +195,35 @@ module.exports={
             ]).toArray()
             console.log("total--------------"+total[0].total)
             resolve(total[0].total)
+        })
+    },
+    placeOrder:(order,products,total)=>{
+        return new Promise((resolve,response)=>{
+            let status=order['payment-method']==='COD'?'placed':'pending'
+            let orderObj={
+                deliveryDetails:{
+                    mobile:order.mobile,
+                    address:order.address,
+                    pincode:order.pincode
+                },
+                userId:ObjectId(order.userId),
+                paymentMethod:order['payment-method'],
+                products:products,
+                totalAmount:total,
+                status:status,
+                date:new Date()
+            }
+
+            db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
+                db.get().collection(collection.CART_COLLECTION).deleteOne({user:ObjectId(order.userId)})
+                resolve()
+            })
+        })
+    },
+    getCartProductList:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let cart=await db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
+            resolve(cart.products)
         })
     }
 }
