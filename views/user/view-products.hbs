@@ -4,14 +4,14 @@
             <div class="row">
                 {{#each products}}
                 <div class="col-md-3 p-3">
-                    <div class="card wrapper fadeInDown" style="width: 15rem; height:25rem">
+                    <div class="card fadeInDown" style="width: 15rem; height:25rem">
                       <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height: 12rem;" >
                       <div class="card-body fadeIn third">
                     
                         <h5 class="card-title">{{this.Name}}</h5>
                         <p class="card-text">{{{this.Description}}}</p>
                         <p class="card-text">₹{{this.Price}}</p>
-                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary cartButton">Add to cart</button>
+                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary cartButton">Add to cart<span style="position: relative;left:5px"><i class="fas fa-cart-plus"></i></span></button>
                       </div>
                     </div>
                 </div>

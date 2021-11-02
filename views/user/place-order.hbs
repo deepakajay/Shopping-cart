@@ -11,7 +11,7 @@
                         <label for="">Pincode</label>
                         <input type="text" name="pincode" id="pincode" class="form-control">
                         <label for="">Mobile</label>
-                        <input type="text" name="mobile" id="mobile" class="form-control">
+                        <input type="text" name="mobile" id="mobile" class="form-control" style="position: relative;left: 11px">
                         <input type="text" name="userId" id="" value="{{user._id}}" hidden>
 
 
@@ -24,18 +24,18 @@
                 <div class="col-md-4">
                     <div class="container mt-5 ml-5 checkout">
                         <h5>
-                            Total Amount:₹ {{total}}
+                            Total Amount:₹ {{total}}.00
                         </h5>
                         <hr>
                         <div class="payment">
                             <p>Payment Method</p>
                             <label class="radio-inline">
-                                <input type="radio" name="payment-method" value="COD" checked>COD
+                                <input type="radio" name="payment-method" value="COD" checked><span style="position: relative;left: 5px;"><i class="fas fa-truck"></i></span><span style="position: relative;left: 5px;">CASH ON DELIVERY</span> 
                             </label>
                             <label class="radio-inline MT-2">
-                                <input type="radio" name="payment-method" value="ONLINE">ONLINE PAYMENT
+                                <input type="radio" name="payment-method" value="ONLINE"><span style="position: relative;left: 5px;"><i class="far fa-credit-card"></i></span><span style="position: relative;left: 6px;">ONLINE PAYMENT</span>
                             </label>
-                            <button class="btn btn-primary float-right" type="submit">Checkout</button>
+                            <button class="btn btn-primary float-right checkoutButton" type="submit"><span><i class="fas fa-cash-register"></i></span> Checkout</button>
                         </div>
 
 
