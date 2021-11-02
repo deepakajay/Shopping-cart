@@ -150,5 +150,9 @@ router.post('/verify-payment', (req, res) => {
 
 })
 
+router.get('/orders',(req,res)=>{
+  res.render('user/orders')
+})
+
 
 module.exports = router;

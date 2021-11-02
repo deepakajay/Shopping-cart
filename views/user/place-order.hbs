@@ -1,5 +1,5 @@
 <section>
-    <div class="container mt-5">
+    <div class="container mt-5 fadeInDown">
         <form action="" id="checkout-form">
             <div class="row">
                 <div class="col-md-6">
@@ -8,7 +8,7 @@
 
                         <label for="">Address</label>
                         <input type="text" name="address" id="address" class="form-control">
-                        <label for="">Pincde</label>
+                        <label for="">Pincode</label>
                         <input type="text" name="pincode" id="pincode" class="form-control">
                         <label for="">Mobile</label>
                         <input type="text" name="mobile" id="mobile" class="form-control">
@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                     <div class="container mt-5 ml-5 checkout">
                         <h5>
-                            Total Amount:Rs{{total}}
+                            Total Amount:₹ {{total}}
                         </h5>
                         <hr>
                         <div class="payment">
@@ -33,7 +33,7 @@
                                 <input type="radio" name="payment-method" value="COD" checked>COD
                             </label>
                             <label class="radio-inline MT-2">
-                                <input type="radio" name="payment-method" value="ONLINE">oNLINE PAYMENT
+                                <input type="radio" name="payment-method" value="ONLINE">ONLINE PAYMENT
                             </label>
                             <button class="btn btn-primary float-right" type="submit">Checkout</button>
                         </div>
@@ -60,6 +60,7 @@
                     location.href = '/order-success'
                 }
                 else {
+                    
                     razorpayPayment(response)
                 }
             }
@@ -106,6 +107,7 @@
                 if(response.status){
                     location.href = '/order-success'
                 }else{
+                    location.href = '/order-success'
                     alert("payment failed")
                 }
             }

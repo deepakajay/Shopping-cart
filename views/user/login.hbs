@@ -1,28 +1,27 @@
-<div class="row">
-    <div class="col-md-6 m-auto">
-        <div class="container mt-5 pl-5">
-            <h2 class="text-center">Login</h2>
-            <form action="/login" method="POST">
 
-            {{#if loginErr}}
-                <p class="error">Invalid Username or Password</p>
-            {{/if}}
-                <div class="form-group">
-                    <label>Email address</label>
-                    <input type="email" class="form-control" name="Email" placeholder="Enter email">
-                </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="Password" placeholder="Password">
-                </div>
-
-                <a href="/signup">Create new account ?</a>
-                <button type="submit" class="btn btn-primary float-right">Login</button>
-            
-            </form>
-
-        </div>
-
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="/images/DeKart-logos_black.png" id="icon" alt="User Icon" / style="width: 124px;height: 109px;" class="fadein third">
     </div>
+
+    <!-- Login Form -->
+    <form action="/login" method="POST">
+    {{#if loginErr}}
+                <p class="error fadeIn second" style="color: orangered;">Invalid Username or Password</p>
+    {{/if}}
+      <input type="text" id="login" class="fadeIn second" name="Email" placeholder="Enter email">
+      <input type="text" id="password" class="fadeIn third" name="Password" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="/signup">Create a new account?</a>
+    </div>
+
+  </div>
 </div>

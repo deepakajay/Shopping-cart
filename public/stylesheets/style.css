@@ -1,0 +1,9 @@
+.cartButton:hover{
+    background-color: rgb(142, 207, 44);
+    border: none
+}
+
+.userDropdown:hover{
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

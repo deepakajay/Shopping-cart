@@ -8,6 +8,7 @@ const productHelpers = require('../helpers/product-helpers');
 router.get('/', function(req, res, next) {
   productHelpers.getAllproducts().then(function(products){
     console.log(products);
+    
     res.render('admin/view-products',{admin:true,products})
   })
   
