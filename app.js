@@ -3,13 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const env=require("dotenv");
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 var hbs=require("express-handlebars")
 var app = express();
 
+
+
+
 var db=require("./config/connection")
+env.config();
 
 var fileUpload=require("express-fileupload")
  

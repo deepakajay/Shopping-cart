@@ -1,0 +1,31 @@
+<section>
+    <div class="container fadeInDown third">
+        <table class="table mt-5">
+            <thead class="tableHead">
+                <tr>
+                   
+               
+                   
+               
+                    <th>Name</th>
+                    <th>Email</th>
+                  
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                {{#each users}}
+                    <tr>
+                        <td>{{this.Name}}</td>
+                    
+                        <td>{{this.Email}}</td>
+                        
+
+                       
+
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</section>

@@ -32,5 +32,17 @@ module.exports={
                resolve({status:false})
             }
         })
+    },
+    getUserOrders:(user)=>{
+        return new Promise(async(resolve,reject)=>{
+            let orders=await db.get().collection(collection.ORDER_COLLECTION).find({}).toArray()
+            resolve(orders)
+        })
+    },
+    getAllUsers:(user)=>{
+        return new Promise(async(resolve,reject)=>{
+            let users=await db.get().collection(collection.USER_COLLECTION).find({}).toArray()
+            resolve(users)
+        })
     }
 }

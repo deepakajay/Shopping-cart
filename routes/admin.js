@@ -5,6 +5,7 @@ var productHelper=require("../helpers/product-helpers")
 const fileUpload = require('express-fileupload');
 const productHelpers = require('../helpers/product-helpers');
 const adminHelpers=require('../helpers/admin-helpers')
+const userHelpers=require('../helpers/user-helpers')
 const verifyALogin=function(req,res,next){
   if(req.session.admin.loggedIn){
     next()
@@ -15,11 +16,23 @@ const verifyALogin=function(req,res,next){
 
 /* GET users listing. */
 
+
+
+
+
+
+
+
+
+
+
+
 router.get('/',verifyALogin,function(req, res, next) {
+  let admin=req.session.admin
   productHelpers.getAllproducts().then(function(products){
     console.log(products);
     
-    res.render('admin/view-products',{admin:true,products})
+    res.render('admin/view-products',{admin:true,products,admin})
   })
   
 });
@@ -105,7 +118,18 @@ router.post('/adminLogin',(req,res)=>{
 
 router.get("/adminLogout",function(req,res){
   req.session.admin=null
-  res.redirect("/")
+  res.redirect("/admin/adminLogin")
 })
+
+router.get("/allOrders",verifyALogin,async function(req,res){
+  let orders = await adminHelpers.getUserOrders(req.session)
+  res.render("admin/all-orders",{admin:req.session.admin, orders})
+})
+
+router.get("/allUsers",verifyALogin,async (req,res)=>{
+  let users=await adminHelpers.getAllUsers(req.session)
+  res.render("admin/all-users",{admin:true,users})
+})
+
 
 module.exports = router;
