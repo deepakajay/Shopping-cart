@@ -22,8 +22,35 @@
       
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="position: relative;right: 100px;">
+     
+
+
+
+
+
+
+        <div class="dropdown " style="position: relative;right: 58px;">
+  <button class="btn btn-secondary dropdown-toggle userDropdown fadeIn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   
+    <i class="fas fa-user"></i>
+      {{user.Name}}
+      
+   
+ 
+  </button>
+  <div class="dropdown-menu userDropdown fadeIn navigationDrop" aria-labelledby="dropdownMenuButton">
+     
+      <a class="dropdown-item userDropdown" href="/adminLogout">LogOut<span style="position: relative;left:10px"><i class="fas fa-sign-out-alt"></i></span></a>
+     
+    
+  
+  </div>
+</div>
+
+
+
+
     </form>
   </div>
 </nav>

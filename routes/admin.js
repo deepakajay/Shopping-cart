@@ -4,8 +4,18 @@ var router = express.Router();
 var productHelper=require("../helpers/product-helpers")
 const fileUpload = require('express-fileupload');
 const productHelpers = require('../helpers/product-helpers');
+const adminHelpers=require('../helpers/admin-helpers')
+const verifyALogin=function(req,res,next){
+  if(req.session.admin.loggedIn){
+    next()
+  }else{
+    res.redirect("/adminLogin")
+  }
+}
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+
+router.get('/',verifyALogin,function(req, res, next) {
   productHelpers.getAllproducts().then(function(products){
     console.log(products);
     
@@ -14,7 +24,7 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get("/add-product",function(req,res){
+router.get("/add-product",verifyALogin,function(req,res,next){
   res.render('admin/add-product')
 })
 
@@ -28,7 +38,7 @@ router.post("/add-product",function(req,res){
     console.log(id);
     image.mv('./public/product-images/'+id+'.jpg',function(err,done){
       if(!err){
-        res.render('admin/add-product')
+        res.render('admin/add-product',{admin:true})
       }
       else{
         console.log(err);
@@ -46,10 +56,10 @@ router.get("/delete-product/:id",function(req,res){
   })
 })
 
-router.get("/edit-product/:id",async function(req,res){
+router.get("/edit-product/:id",verifyALogin,async function(req,res,next){
   let product=await productHelpers.getProductDetails(req.params.id)
   console.log(product);
-  res.render('admin/edit-product',{product})
+  res.render('admin/edit-product',{admin:true,product})
 })
 
 router.post("/edit-product/:id",function(req,res){
@@ -62,6 +72,40 @@ router.post("/edit-product/:id",function(req,res){
      
     }
   })
+})
+
+
+router.get('/adminLogin',function(req,res){
+  if(req.session.admin){
+    res.redirect("/")
+  }
+  else{
+    res.render("admin/login",{"loginErr":req.session.adminLoginErr})
+    req.session.adminLoginErr=false
+  }
+ 
+})
+
+
+router.post('/adminLogin',(req,res)=>{
+  adminHelpers.doLogin(req.body).then((response)=>{
+    if(response.status){
+      
+      console.log("Admin in successfully loged in>>>>>>>>>>><<<<<<<<<<");
+      req.session.admin=response.admin
+      req.session.admin.loggedIn=true
+      res.redirect('/admin')
+    }
+    else{
+      req.session.adminLoginErr=true
+      res.redirect('/admin/adminLogin') 
+    }
+  })
+})
+
+router.get("/adminLogout",function(req,res){
+  req.session.admin=null
+  res.redirect("/")
 })
 
 module.exports = router;
