@@ -25,3 +25,16 @@
 .headerText{
     color: #fff;
 }
+
+.tableHead{
+    background-color: #0275d8 ;
+    color: #fff;
+    text-align: center;
+    ;
+}
+
+.table{
+    
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}

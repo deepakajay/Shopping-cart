@@ -1,7 +1,7 @@
 <section>
     <div class="container fadeInDown third">
         <table class="table mt-5">
-            <thead>
+            <thead class="tableHead">
                 <tr>
                     <th scope="col">Date</th>
                     <th>Address</th>
@@ -10,6 +10,7 @@
                     <th scope="col">Amount</th>
                     <th scope="col">Payment</th>
                     <th>Status</th>
+                    <th>Products</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,12 +20,12 @@
                         <td>{{this.deliveryDetails.address}}</td>
                         <td>{{this.deliveryDetails.pincode}}</td>
                         <td>{{this.deliveryDetails.mobile}}</td>
-                        <td>{{this.totalAmount}}</td>
+                        <td>₹{{this.totalAmount}}.00</td>
                         <td>{{this.paymentMethod}}</td>
                         <td>{{this.status}}</td>
 
                         <td>
-                            <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
+                            <a href="/view-order-products/{{this._id}}" class="btn btn-primary cartButton">View Products</a>
                         </td>
 
                     </tr>
