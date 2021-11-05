@@ -23,7 +23,7 @@ router.get('/',async function(req, res, next) {
 
   productHelpers.getAllproducts().then(function(products){
     
-    res.render('user/view-products',{admin:false,products,user,cartCount })
+    res.render('user/view-products',{admin:false,user:true,products,user,cartCount })
   })
 });
 
@@ -162,6 +162,15 @@ router.get('/orders',(req,res)=>{
   res.render('user/orders')
 })
 
+
+router.get("/productPage/:id",async function(req,res){
+  console.log("Productpage..........");
+  // console.log("View order Products.....");
+  // let products = await userHelpers.getOrderProducts(req.params.id)
+  // res.render('user/view-order-products', { user: req.session.user, products })
+  let product=await userHelpers.getProduct(req.params.id)
+  res.render("user/productPage",{user:true,product})
+})
 
 
 module.exports = router;

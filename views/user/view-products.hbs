@@ -8,8 +8,9 @@
                     <div class="card fadeInDown third" style="width: 15rem; height:25rem">
                       <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height: 12rem;" >
                       <div class="card-body fadeIn third">
-                    
-                        <h5 class="card-title">{{this.Name}}</h5>
+                          
+                       <a href="/productPage/{{this._id}}" style="text-decoration: none;"> <h5 class="card-title">{{this.Name}}</h5> </a>
+                        
                         <p class="card-text">{{{this.Description}}}</p>
                         <p class="card-text">₹{{this.Price}}</p>
                         

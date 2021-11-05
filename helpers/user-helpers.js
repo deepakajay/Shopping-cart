@@ -273,6 +273,39 @@ module.exports={
             resolve(orderItems)
          })
     },
+    getProduct:(proId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let product=await db.get().collection(collection.PRODUCT_COLLECTION).findOne({'_id':ObjectId(proId)})
+         resolve(product)
+        })
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     generateRazorpay:(orderId,total)=>{
         return new Promise((resolve,reject)=>{
            var options = {
