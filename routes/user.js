@@ -3,6 +3,8 @@ var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const userHelpers=require('../helpers/user-helpers')
 const { route } = require('./admin');
+let alert = require('alert'); 
+
 const verifyLogin=function(req,res,next){
   if(req.session.user.loggedIn){
     next()
@@ -44,12 +46,15 @@ router.post('/signup',function(req,res){
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);
    
-    req.session.user=response;
-    req.session.user.loggedIn=true;
-    res.redirect("/")
+ 
+    // req.session.user=response;
+    // req.session.user.loggedIn=true;
+    alert("Account created Successfully, now Login to your Account")
+    res.redirect("/login")
 
   })
 })
+
 
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
