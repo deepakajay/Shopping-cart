@@ -49,8 +49,12 @@
 
         <!-- Product Pricing -->
         <div class="product-price">
-          <span>₹{{this.product.Price}}</span>
+          <span>₹{{this.product.Price}}.00</span>
+          {{#if user}}
           <a href="#" class="cart-btn cartBtn" onclick="addToCart('{{this.product._id}}')" style="text-decoration: none;">Add to cart</a>
+          {{else}}
+          <a href="/login" class="cart-btn cartBtn"  style="text-decoration: none;">Add to cart</a>
+          {{/if}}
         </div>
       </div>
     </section>

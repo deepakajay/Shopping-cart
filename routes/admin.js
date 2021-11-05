@@ -38,7 +38,7 @@ router.get('/',verifyALogin,function(req, res, next) {
 });
 
 router.get("/add-product",verifyALogin,function(req,res,next){
-  res.render('admin/add-product')
+  res.render('admin/add-product',{admin:true})
 })
 
 router.post("/add-product",function(req,res){

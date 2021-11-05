@@ -81,10 +81,10 @@
             "currency": "INR",
             "name": "De-Kart",
             "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
+            "image": "/images/DeKart-logos_black.png",
             "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": function (response) {
-               alert("Online Payment Started")
+               
                 verifyPayment(response,order)
             },
             "prefill": {

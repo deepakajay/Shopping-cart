@@ -163,7 +163,7 @@ router.get('/orders',(req,res)=>{
 })
 
 
-router.get("/productPage/:id",async function(req,res){
+router.get("/productPage/:id",async function(req,res,next){
   console.log("Productpage..........");
   // console.log("View order Products.....");
   // let products = await userHelpers.getOrderProducts(req.params.id)
