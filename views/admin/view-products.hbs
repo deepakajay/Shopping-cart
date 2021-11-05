@@ -9,12 +9,12 @@
     style="width:250px;height:250px">
 </lord-icon>
             <a href="admin/add-product">
-                <button class="glow-on-hover" type="button" style="    position: relative;left: 25px;bottom: 207px;">Add new products</button>
+                <button class="btn btn-success fadeIn fourth" type="button" style="position: absolute;top: 335px;left: 210px;">Add new products</button>
             </a>
         </div>
 
 
-        <table class="table mt-2" style="position: relative;bottom: 44px;">
+        <table class="table mt-2"  id="productsTable" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -22,6 +22,7 @@
       <th scope="col">Category</th>
       <th scope="col">Description</th>
       <th scope="col">Image</th>
+      <th scope="col">Options</th>
     </tr>
   </thead>
   <tbody>
@@ -42,3 +43,9 @@
 </table>
     </div>
 </section>
+
+<script>
+  $(function(){
+    $('#productsTable').DataTable();
+  })
+</script>
