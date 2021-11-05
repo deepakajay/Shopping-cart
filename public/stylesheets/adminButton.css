@@ -73,3 +73,7 @@ body {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+.cartBtn:hover{
+    background-color:#28a745 ;
+}

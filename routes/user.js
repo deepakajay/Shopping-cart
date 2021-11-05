@@ -169,7 +169,7 @@ router.get("/productPage/:id",async function(req,res){
   // let products = await userHelpers.getOrderProducts(req.params.id)
   // res.render('user/view-order-products', { user: req.session.user, products })
   let product=await userHelpers.getProduct(req.params.id)
-  res.render("user/productPage",{user:true,product})
+  res.render("user/productPage",{user:true,user:req.session.user,product})
 })
 
 
